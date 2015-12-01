@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Audio test</title>
+  </head>
+  <body>
+    <audio src="opus.weba" controls></audio>
+
+    <ul class="log"></ul>
+
+    <script>
+      var audio = document.querySelector('audio');
+      var log = document.querySelector('.log');
+
+      ['audio/ogg; codecs="opus"', 'audio/webm; codecs="opus"'].forEach(function(test) {
+        var result = document.createElement('li');
+        var support = audio.canPlayType(test);
+        result.innerText = test + ' : ' + (support ? support : 'not supported')
+        log.appendChild(result);
+      });
+
+    </script>
+  </body>
+</html>
